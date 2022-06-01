@@ -5,9 +5,6 @@ class CreatePiecesTable < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :front_img
       t.string :back_img
-      t.string :starting_coords
-      t.string :coords
-      t.boolean :home_team
     end 
   end
 end

@@ -1,5 +1,6 @@
 puts "🌱 Seeding"
 
+Deployment.destroy_all
 Move.destroy_all
 Piece.destroy_all
 Game.destroy_all
@@ -11,9 +12,6 @@ ditto = Piece.create(
   name: "ditto", 
   front_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
   back_img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png",
-  starting_coords: "1,1",
-  coords: "1,1",
-  home_team: true
 )
 
 m1 = Move.create(
@@ -26,14 +24,22 @@ m2 = Move.create(
   piece: ditto,
   can_kill: false,
   offset: "0,2",
-  dependent_on_move: m1,
+  dependent_on: m1.offset,
 )
 
 m3 = Move.create(
   piece: ditto,
   can_kill: true,
   offset: "0,3",
-  dependent_on_move: m2,
+  dependent_on: m2.offset
+)
+
+Deployment.create(
+  piece: ditto,
+  starting_coords: "1,1",
+  coords: "1,1",
+  home_team: true,
+  image: ditto.front_img
 )
 
 
