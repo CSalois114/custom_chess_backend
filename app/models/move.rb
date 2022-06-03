@@ -1,3 +1,3 @@
 class Move < ActiveRecord::Base
-  belongs_to :piece
+  belongs_to :piece_type
 end

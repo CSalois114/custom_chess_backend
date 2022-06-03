@@ -1,5 +1,4 @@
 class Piece < ActiveRecord::Base
-  belongs_to :game
-  has_many :moves
-  has_many :deployments
+  belongs_to :piece_type
+  has_many :moves, through: :piece_type
 end
